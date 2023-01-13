@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <script>
+            //Write a function called getComputerChoice which generates a random value between 'rock', 'paper', and 'scissors'
+            function getComputerChoice() {
+                switch(Math.floor(Math.random() * 3 + 1)) {
+                    case 1:
+                        return 'rock';
+                        break;
+                    case 2:
+                        return 'paper';
+                        break;
+                    case 3:
+                        return 'scissors';
+                        break;
+                }
+            }
+            let whoWins = '';
+
+            //Write a function that plays a single round of rock paper scissors that takes in 2 parameters, playerSelection and computerSelection
+            function playRound(playerSelection, computerSelection) {
+            
+                
+
+            //The function should return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
+                if (playerSelection === 'rock') {
+                    if (computerSelection === 'rock') {
+                        whoWins = 'neither';
+                        return "You tie! Rock equals Rock";
+                    } else if (computerSelection === 'paper') {
+                        whoWins = 'computer';
+                        return "You lose! Paper beats Rock";
+                    } else {
+                        whoWins = 'player';
+                        return "You win! Rock beats Scissors";
+                    }
+                } else if (playerSelection === 'paper') {
+                    if (computerSelection === 'rock') {
+                        whoWins = 'player';
+                        return "You win! Paper beats Rock";
+                    } else if (computerSelection === 'paper') {
+                        whoWins = 'neither';
+                        return "You tie! Paper equals Paper";
+                    } else {
+                        whoWins = 'computer';
+                        return "You lose! Scissors beat Paper";
+                    }
+                } else {
+                    if (computerSelection === 'rock') {
+                        whoWins = 'computer';
+                        return "You lose! Rock beats Scissors";
+                    } else if (computerSelection === 'paper') {
+                        whoWins = 'player';
+                        return "You win! Scissors beat Paper";
+                    } else {
+                        whoWins = 'neither';
+                        return "You tie! Scissors equals Scissors";
+                    }
+                }
+
+                
+                
+            }
+            
+            //Write a function called game() that calls the playRound function inside of this one to play a 5 round game that keeps a score
+            function game() {
+                //Generate a prompt to get playerSelection
+                let playerWins = 0;
+                let computerWins = 0;
+
+                while (playerWins < 3 && computerWins < 3) {
+                    
+                    
+                    playerSelection = prompt("What's your choice?").toLowerCase();
+                    computerSelection = getComputerChoice();
+                    
+                    playRound(playerSelection, computerSelection);
+                    console.log(whoWins);
+
+                    if (whoWins === 'player') {
+                        playerWins++;
+                        
+                    } else if (whoWins === 'computer') {
+                        computerWins++;
+                        
+                    } else {
+                    }
+                }
+
+                if (playerWins > computerWins) {
+                    console.log("Congrats, you've won best out of 5! It's Computer: " + computerWins + " vs. You: " + playerWins);
+                } else if (computerWins > playerWins) {
+                    console.log("You've lost! It's Computer: " + computerWins + " vs. You: " + playerWins);
+                } else {
+                    console.log("You've tied! It's Computer: " + computerWins + " vs. You: " + playerWins);
+                }
+            }
+
+            game();
+                
+            
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
